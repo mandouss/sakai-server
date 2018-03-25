@@ -25,11 +25,11 @@ fi
 
 # install Apache Maven
 
-wget -P /opt/ http://www-eu.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gza
+wget -P /opt/ http://www-eu.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
 
 sudo tar -xvzf /opt/apache-maven-3.3.9-bin.tar.gz
 
-sudo mv /opt/apache-maven-3.3.9 /opt/maven
+sudo mv apache-maven-3.3.9 /opt/maven
 
 echo "finished installing Maven"
 
