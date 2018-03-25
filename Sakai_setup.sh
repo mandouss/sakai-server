@@ -24,18 +24,17 @@ else
 fi
 
 # install Apache Maven
+wget -P /opt https://archive.apache.org/dist/maven/maven-3/3.2.3/binaries/apache-maven-3.2.3-bin.tar.gz 
 
-wget -P /opt/ http://www-eu.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+sudo tar -xvzf /opt/apache-maven-3.2.3-bin.tar.gz
 
-sudo tar -xvzf /opt/apache-maven-3.3.9-bin.tar.gz
-
-sudo mv apache-maven-3.3.9 /opt/maven
+sudo mv /opt/apache-maven-3.2.3 /opt/maven
 
 echo "finished installing Maven"
 
 # install Apache Tomcat
 
-curl -O http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v8.5.5/bin/apache-tomcat-8.5.5.tar.gz
+curl -O https://archive.apache.org/dist/tomcat/tomcat-8/v8.0.32/bin/apache-tomcat-8.0.32.tar.gz
 
 sudo mkdir /opt/tomcat
 
@@ -48,7 +47,7 @@ wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.45
 
 sudo tar -xvzf mysql-connector-java-5.1.45.tar.gz
 
-sudo mv mysql-connector-java-5.1.45-bin.jar $CATALINA_HOME/lib
+sudo mv ./mysql-connector-java-5.1.45/mysql-connector-java-5.1.45-bin.jar $CATALINA_HOME/lib
 
 echo "finished placing the JDBC"
 
@@ -93,7 +92,7 @@ defaultTransactionIsolationString@javax.sql.BaseDataSource=TRANSACTION_READ_COMM
 sudo su
 
 echo "Need your help 1****************************************************"
-echo "please open up \$CATALINA_HOME/conf/context.xml"
+echo "please open up $CATALINA_HOME/conf/context.xml"
 echo "Within the <Context> label add
 
    <JarScanner>
@@ -104,7 +103,7 @@ echo "Within the <Context> label add
 read -p "Press enter to continue, when you have done it"
 
 echo "Need your help 2****************************************************"
-echo "please open up \$CATALINA_HOME/conf/context.xml"
+echo "please open up $CATALINA_HOME/conf/server.xml"
 echo "Modify CATALINA_HOME/conf/server.xml for international character support (Sakai is internationalized and has 20 languages available). Add URIEncoding to the Connector element. <Connector port=\"8080\" URIEncoding=\"UTF-8\" ..."
 
 read -p "Press enter to continue, when you have done it"
@@ -120,20 +119,23 @@ sudo mv $CATALINA_HOME/setenv.sh $CATALINA_HOME/bin
 echo "start compile Sakai"
 echo "Please execute the following command one by one"
 
-echo "cd \$CATALINA_HOME/sakai"
+cd $CATALINA_HOME/sakai
 
-echo "git clone https://github.com/sakaiproject/sakai.git"
+git clone https://github.com/sakaiproject/sakai.git
 
-echo "cd sakai && git checkout 11.2"
+cd sakai 
 
-echo "cd master"
+git checkout 11.2
 
-echo "mvn clean install"
+cd master
+
+mvn clean install
 
 # deploying sakai
-echo "cd .."
+cd ..
 
-echo "mvn clean install sakai:deploy -Dmaven.tomcat.home=\$CATALINA_HOME -Djava.net.preferIPv4Stack=true -Dmaven.test.skip=true"
+mvn clean install sakai:deploy -Dmaven.tomcat.home=\$CATALINA_HOME -Djava.net.preferIPv4Stack=true -Dmaven.test.skip=true
 
 # finish
 echo "if the compile was all successful, now you can go to \$CATALINA_HOME and run startup.sh to open up sakai site"
+
