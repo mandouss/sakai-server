@@ -138,3 +138,4 @@ mvn clean install sakai:deploy -Dmaven.tomcat.home=\$CATALINA_HOME -Djava.net.pr
 
 # finish
 echo "if the compile was all successful, now you can go to \$CATALINA_HOME and run startup.sh to open up sakai site"
+
