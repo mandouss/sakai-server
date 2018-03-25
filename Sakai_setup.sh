@@ -24,18 +24,17 @@ else
 fi
 
 # install Apache Maven
+wget -P /opt https://archive.apache.org/dist/maven/maven-3/3.2.3/binaries/apache-maven-3.2.3-bin.tar.gz 
 
-wget -P /opt/ http://www-eu.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gza
+sudo tar -xvzf /opt/apache-maven-3.2.3-bin.tar.gz
 
-sudo tar -xvzf /opt/apache-maven-3.3.9-bin.tar.gz
-
-sudo mv /opt/apache-maven-3.3.9 /opt/maven
+sudo mv /opt/apache-maven-3.2.3 /opt/maven
 
 echo "finished installing Maven"
 
 # install Apache Tomcat
 
-curl -O http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v8.5.5/bin/apache-tomcat-8.5.5.tar.gz
+curl -O https://archive.apache.org/dist/tomcat/tomcat-8/v8.0.32/bin/apache-tomcat-8.0.32.tar.gz
 
 sudo mkdir /opt/tomcat
 
@@ -48,7 +47,7 @@ wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.45
 
 sudo tar -xvzf mysql-connector-java-5.1.45.tar.gz
 
-sudo mv mysql-connector-java-5.1.45-bin.jar $CATALINA_HOME/lib
+sudo mv ./mysql-connector-java-5.1.45/mysql-connector-java-5.1.45-bin.jar $CATALINA_HOME/lib
 
 echo "finished placing the JDBC"
 
