@@ -92,7 +92,7 @@ defaultTransactionIsolationString@javax.sql.BaseDataSource=TRANSACTION_READ_COMM
 sudo su
 
 echo "Need your help 1****************************************************"
-echo "please open up \$CATALINA_HOME/conf/context.xml"
+echo "please open up $CATALINA_HOME/conf/context.xml"
 echo "Within the <Context> label add
 
    <JarScanner>
@@ -103,7 +103,7 @@ echo "Within the <Context> label add
 read -p "Press enter to continue, when you have done it"
 
 echo "Need your help 2****************************************************"
-echo "please open up \$CATALINA_HOME/conf/context.xml"
+echo "please open up $CATALINA_HOME/conf/server.xml"
 echo "Modify CATALINA_HOME/conf/server.xml for international character support (Sakai is internationalized and has 20 languages available). Add URIEncoding to the Connector element. <Connector port=\"8080\" URIEncoding=\"UTF-8\" ..."
 
 read -p "Press enter to continue, when you have done it"
@@ -119,20 +119,22 @@ sudo mv $CATALINA_HOME/setenv.sh $CATALINA_HOME/bin
 echo "start compile Sakai"
 echo "Please execute the following command one by one"
 
-echo "cd \$CATALINA_HOME/sakai"
+cd $CATALINA_HOME/sakai
 
-echo "git clone https://github.com/sakaiproject/sakai.git"
+git clone https://github.com/sakaiproject/sakai.git
 
-echo "cd sakai && git checkout 11.2"
+cd sakai 
 
-echo "cd master"
+git checkout 11.2
 
-echo "mvn clean install"
+cd master
+
+mvn clean install
 
 # deploying sakai
-echo "cd .."
+cd ..
 
-echo "mvn clean install sakai:deploy -Dmaven.tomcat.home=\$CATALINA_HOME -Djava.net.preferIPv4Stack=true -Dmaven.test.skip=true"
+mvn clean install sakai:deploy -Dmaven.tomcat.home=\$CATALINA_HOME -Djava.net.preferIPv4Stack=true -Dmaven.test.skip=true
 
 # finish
 echo "if the compile was all successful, now you can go to \$CATALINA_HOME and run startup.sh to open up sakai site"
