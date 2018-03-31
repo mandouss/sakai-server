@@ -20,6 +20,8 @@ Test Server\[link\](http://152.3.64.14:8080/portal/)
 ### How To set up your server
 
 1. install apache2: sudo apt-get install apache2
-2. install PHP
-3. change /etc/apache2/dir.conf 
-4. put php in /var/www/htm
+2. install PH
+3. change /etc/apache2/dir.conf: to specific which file to be executed first by Apache2 
+4. put your .php or .html in /var/www/htm
+
+** The instrcuction for the first 2 steps can be found at: https://www.howtoforge.com/tutorial/install-apache-with-php-and-mysql-on-ubuntu-16-04-lamp/
