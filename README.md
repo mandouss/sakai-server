@@ -44,9 +44,18 @@ The script has been tested.
 
 #### getVisitorIP.php
 
-This is the script that the web server execute. It provides the following functions: 1) get visitor's IP address (for future use) 2) parse information sent from Sakai 3) call java program for folder and permission manupulations in Box 4) redirect back to show Box within Sakai frame
+This is the script that the web server execute. It provides the following functions: 
+
+1. get visitor's IP address (for future use)
+2. parse information sent from Sakai
+3. call java program for folder and permission manupulations in Box 
+4. redirect back to show Box within Sakai frame
 
 This script might have been evolved in sprint 3
+
+#### indexzw.html
+
+Some unimportant testing script
 
 ## Sprint 3
 In Sprint 3 our group was merged with Sakai-client, we used their git repo.
