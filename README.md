@@ -16,7 +16,7 @@ Create a MySQL database to hold the data from Sakai, connect it with Tomcat tool
 Compile the Sakai source code and start up the Sakai test server. 
 
 
-Test Server\[link\](http://152.3.53.63:8080/port)
+Test Server\[link\](http://152.3.53.63:8080/porta)
 
 ### How To set up your server
 
